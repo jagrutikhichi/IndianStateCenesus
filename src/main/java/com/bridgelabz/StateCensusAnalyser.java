@@ -31,7 +31,7 @@ public class StateCensusAnalyser {
 			entries++;
 			IndianCensusCSV censusData = censusCSVIterator.next();
 		}
-		System.out.println("Number of Entries in File"+entries);
+		System.out.println("Number of Entries in File "+entries);
 		return entries;	
 		
 	}
