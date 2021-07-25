@@ -43,4 +43,16 @@ public class StateCensusAnalyserTest {
 			assertEquals(CensusAnalyserException.ExceptionType.Unable_To_Parse, e.type);
 		}
 	}
+	
+	@Test
+	public void given_IndiaCensusData_WithWrongDelimeter_ShoulThrowException() throws IOException {
+		try {
+			StateCensusAnalyser censusAnalyser = new StateCensusAnalyser();
+			ExpectedException exceptionRule = ExpectedException.none();
+			exceptionRule.expect(CensusAnalyserException.class);
+			censusAnalyser.LoadIndiaCensusCSVData(csvPath);
+		} catch(CensusAnalyserException e) {
+			assertEquals(CensusAnalyserException.ExceptionType.Unable_To_Parse, e.type);
+		}
+	}
 }
