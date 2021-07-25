@@ -1,48 +1,35 @@
 package com.bridgelabz;
 
 public class IndianCensusCSV {
-	private String State;
-	private String District;
-	private int population2001;
-	private int population2011;
-
+	private String state;
+	private String areaInSqkm;
+	private int population;
+	private int densityPerSqkm;
 	public String getState() {
-		return State;
+		return state;
 	}
-
-
 	public void setState(String state) {
-		State = state;
+		this.state = state;
+	}
+	public String getAreaInSqkm() {
+		return areaInSqkm;
+	}
+	public void setAreaInSqkm(String areaInSqkm) {
+		this.areaInSqkm = areaInSqkm;
+	}
+	public int getPopulation() {
+		return population;
+	}
+	public void setPopulation(int population) {
+		this.population = population;
+	}
+	public int getDensityPerSqkm() {
+		return densityPerSqkm;
+	}
+	public void setDensityPerSqkm(int densityPerSqkm) {
+		this.densityPerSqkm = densityPerSqkm;
 	}
 
-
-	public String getDistrict() {
-		return District;
-	}
-
-
-	public void setDistrict(String district) {
-		District = district;
-	}
-
-
-	public int getPopulation2001() {
-		return population2001;
-	}
-
-
-	public void setPopulation2001(int population2001) {
-		this.population2001 = population2001;
-	}
-
-
-	public int getPopulation2011() {
-		return population2011;
-	}
-
-
-	public void setPopulation2011(int population2011) {
-		this.population2011 = population2011;
-	}
+	
 	
 }

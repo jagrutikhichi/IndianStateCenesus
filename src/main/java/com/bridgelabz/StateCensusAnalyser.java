@@ -10,15 +10,16 @@ import com.opencsv.bean.CsvToBeanBuilder;
 
 public class StateCensusAnalyser {
 
-	public static int LoadIndiaCensusData(String csvPath)   {
+	public String csvPath;
+
+	public StateCensusAnalyser() {
+	}
+
+	public static int LoadIndiaCensusData(String csvPath) throws IOException, CensusAnalyserException   {
 		
-		Reader reader = null;
-			try {
-				reader = Files.newBufferedReader(Paths.get(csvPath));
-			} catch (IOException e) {
-				
-				e.printStackTrace();
-			}
+		Reader reader;
+		try {
+			reader = Files.newBufferedReader(Paths.get(csvPath));
 		
 		@SuppressWarnings({ "unchecked", "rawtypes" })
 		CsvToBean <IndianCensusCSV> csvToBean = new CsvToBeanBuilder(reader)
@@ -31,15 +32,17 @@ public class StateCensusAnalyser {
 			entries++;
 			IndianCensusCSV censusData = censusCSVIterator.next();
 		}
-		System.out.println("Number of Entries in File "+entries);
 		return entries;	
-		
+		} catch (IOException e) {
+			throw new CensusAnalyserException(e.getMessage(),
+                    CensusAnalyserException.ExceptionType.Csv_File_Problem);
+		}		
 	}
-	
-	public static void main(String[] args)  {
-		
-		String csvPath = "C:\\Users\\Jagruti Khichi\\Eclipse-workspase\\IndianStatesCensusAnalyser\\Data\\censusFile.csv";
+
+	public static void main(String[] args) throws IOException, CensusAnalyserException {
+
+		String csvPath = "C:\\Users\\Jagruti Khichi\\Eclipse-workspase\\IndianStatesCensusAnalyser\\Data\\IndiaStateCensusData.csv";
 		LoadIndiaCensusData(csvPath);
-		
+
 	}
 }
